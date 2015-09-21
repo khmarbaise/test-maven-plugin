@@ -1,8 +1,7 @@
 package com.soebes.maven.plugins.tmp;
 
-import java.util.List;
+import javax.inject.Inject;
 
-import org.apache.maven.model.Dependency;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
 import org.apache.maven.plugins.annotations.LifecyclePhase;
@@ -19,14 +18,13 @@ public class TestMojo
     extends AbstractUpToDateMojo
 {
 
-    /**
-     * Define the list of dependencies you would like check if they are up-to-date. If this list is not defined or empty
-     * the plugin will check all project dependencies.
-     */
-    @Parameter
-    private List<Dependency> dependencies;
-
-    public void execute()
+	@Parameter
+	private String conf;
+	
+	@Inject
+	private DeployAtParticularPosition deploy;
+	
+	public void execute()
         throws MojoExecutionException, MojoFailureException
     {
 
@@ -36,7 +34,7 @@ public class TestMojo
             return;
         }
 
-
+        deploy.setConf(conf);
     }
 
 

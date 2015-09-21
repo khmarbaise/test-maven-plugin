@@ -20,26 +20,34 @@ public class DeployAtParticularPosition extends AbstractMavenLifecycleParticipan
 
 	private RepositorySystem system;
 
+	private String conf;
+
+	public void setConf(String conf) {
+		this.conf = conf;
+	}
+
 	@Inject
 	public DeployAtParticularPosition(RepositorySystem system) {
-		LOGGER.info("DeployAtParticularPosition(ctro)");
+		LOGGER.info("DeployAtParticularPosition::DeployAtParticularPosition(ctro)");
 		this.system = system;
 	}
 
 	@Override
 	public void afterProjectsRead(MavenSession session) {
-		LOGGER.info("afterProjectsRead()");
+		LOGGER.info("DeployAtParticularPosition::afterProjectsRead()");
+		LOGGER.info("DeployAtParticularPosition::afterProjectsRead() value:" + conf);
 		LOGGER.info(" -> " + session.getCurrentProject().getId());
 	}
 
 	@Override
 	public void afterSessionStart(MavenSession session) {
-		LOGGER.info("afterSessionStart()");
+		LOGGER.info("DeployAtParticularPosition::afterSessionStart()");
 	}
 
 	@Override
 	public void afterSessionEnd(MavenSession session) throws MavenExecutionException {
-		LOGGER.info("afterSessionEnd(start)");
+		LOGGER.info("DeployAtParticularPosition::afterSessionEnd(start)");
+		LOGGER.info("DeployAtParticularPosition::afterSessionEnd() value:" + conf);
 		MavenProject project = session.getProjects().get(0);
 
 		if (!project.hasLifecyclePhase(LifecyclePhase.DEPLOY.id())) {
@@ -49,7 +57,7 @@ public class DeployAtParticularPosition extends AbstractMavenLifecycleParticipan
 		for (MavenProject p : session.getProjectDependencyGraph().getSortedProjects()) {
 			LOGGER.info("-> Project:" + p.getId());
 		}
-		LOGGER.info("afterSessionEnd(end)");
+		LOGGER.info("DeployAtParticularPosition::afterSessionEnd(end)");
 	}
 
 }

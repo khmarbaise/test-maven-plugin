@@ -93,13 +93,16 @@
         <artifactId>@project.artifactId@</artifactId>
         <version>@project.version@</version>
         <extensions>true</extensions>
-<!--         <executions> -->
-<!--           <execution> -->
-<!--             <id>hi-there</id> -->
-<!--             <phase>test</phase> -->
-<!--             <goals><goal>test</goal></goals> -->
-<!--           </execution> -->
-<!--         </executions> -->
+        <configuration>
+          <conf>ANTON</conf>
+        </configuration>
+        <executions>
+        <execution>
+        <id>first</id>
+        <goals><goal>test</goal></goals>
+        <phase>initialize</phase>
+        </execution>
+        </executions>
       </plugin>
     </plugins>
   </build>
