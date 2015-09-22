@@ -26,6 +26,14 @@ public class DeployAtParticularPosition extends AbstractMavenLifecycleParticipan
 		this.conf = conf;
 	}
 
+	public RepositorySystem getSystem() {
+		return system;
+	}
+
+	public void setSystem(RepositorySystem system) {
+		this.system = system;
+	}
+
 	@Inject
 	public DeployAtParticularPosition(RepositorySystem system) {
 		LOGGER.info("DeployAtParticularPosition::DeployAtParticularPosition(ctro)");
