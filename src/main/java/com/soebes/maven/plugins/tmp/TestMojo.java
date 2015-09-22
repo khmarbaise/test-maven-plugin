@@ -11,7 +11,7 @@ import org.apache.maven.plugins.annotations.Parameter;
 /**
  * Will check dependencies of your project and fail the build if they are not up-to-date.
  * 
- * @author Karl-Heinz Marbaise <a href="mailto:khmarbaise@soebes.de">khmarbaise@soebes.de</a>
+ * @author Karl-Heinz Marbaise <a href="mailto:khmarbaise@apache.org">khmarbaise@apache.org</a>
  */
 @Mojo( name = "test", defaultPhase = LifecyclePhase.NONE, requiresProject = true, threadSafe = true )
 public class TestMojo
