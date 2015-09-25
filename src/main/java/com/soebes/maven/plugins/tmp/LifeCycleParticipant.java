@@ -14,8 +14,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 @Singleton
-@Named
-public class DeployAtParticularPosition extends AbstractMavenLifecycleParticipant {
+@Named("lifeobserver")
+public class LifeCycleParticipant extends AbstractMavenLifecycleParticipant {
 	private final Logger LOGGER = LoggerFactory.getLogger(getClass());
 
 	private RepositorySystem system;
@@ -35,27 +35,28 @@ public class DeployAtParticularPosition extends AbstractMavenLifecycleParticipan
 	}
 
 	@Inject
-	public DeployAtParticularPosition(RepositorySystem system) {
-		LOGGER.info("DeployAtParticularPosition::DeployAtParticularPosition(ctro)");
+	public LifeCycleParticipant(RepositorySystem system) {
+		LOGGER.info("LifeCycleParticipant::LifeCycleParticipant(ctro) {}", this);
 		this.system = system;
 	}
 
 	@Override
 	public void afterProjectsRead(MavenSession session) {
-		LOGGER.info("DeployAtParticularPosition::afterProjectsRead()");
-		LOGGER.info("DeployAtParticularPosition::afterProjectsRead() value:" + conf);
+		LOGGER.info("LifeCycleParticipant::afterProjectsRead() {}", this);
+		LOGGER.info("LifeCycleParticipant::afterProjectsRead() value:{}", conf);
 		LOGGER.info(" -> " + session.getCurrentProject().getId());
 	}
 
 	@Override
 	public void afterSessionStart(MavenSession session) {
-		LOGGER.info("DeployAtParticularPosition::afterSessionStart()");
+		LOGGER.info("LifeCycleParticipant::afterSessionStart() {}", this);
+		LOGGER.info("LifeCycleParticipant::afterSessionStart() value:" + conf);
 	}
 
 	@Override
 	public void afterSessionEnd(MavenSession session) throws MavenExecutionException {
-		LOGGER.info("DeployAtParticularPosition::afterSessionEnd(start)");
-		LOGGER.info("DeployAtParticularPosition::afterSessionEnd() value:" + conf);
+		LOGGER.info("LifeCycleParticipant::afterSessionEnd(start)");
+		LOGGER.info("LifeCycleParticipant::afterSessionEnd() value:" + conf);
 		MavenProject project = session.getProjects().get(0);
 
 		if (!project.hasLifecyclePhase(LifecyclePhase.DEPLOY.id())) {
@@ -65,7 +66,7 @@ public class DeployAtParticularPosition extends AbstractMavenLifecycleParticipan
 		for (MavenProject p : session.getProjectDependencyGraph().getSortedProjects()) {
 			LOGGER.info("-> Project:" + p.getId());
 		}
-		LOGGER.info("DeployAtParticularPosition::afterSessionEnd(end)");
+		LOGGER.info("LifeCycleParticipant::afterSessionEnd(end)");
 	}
 
 }

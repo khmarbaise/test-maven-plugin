@@ -22,7 +22,7 @@ public class TestMojo
 	private String conf;
 	
 	@Inject
-	private DeployAtParticularPosition deploy;
+	private LifeCycleParticipant deploy;
 	
 	public void execute()
         throws MojoExecutionException, MojoFailureException
