@@ -34,7 +34,7 @@ public class TestMojo
             return;
         }
 
-        deploy.setConf(conf);
+//        deploy.setConf(conf);
     }
 
 

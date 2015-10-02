@@ -20,12 +20,6 @@ public class LifeCycleParticipant extends AbstractMavenLifecycleParticipant {
 
 	private RepositorySystem system;
 
-	private String conf;
-
-	public void setConf(String conf) {
-		this.conf = conf;
-	}
-
 	public RepositorySystem getSystem() {
 		return system;
 	}
@@ -43,20 +37,17 @@ public class LifeCycleParticipant extends AbstractMavenLifecycleParticipant {
 	@Override
 	public void afterProjectsRead(MavenSession session) {
 		LOGGER.info("LifeCycleParticipant::afterProjectsRead() {}", this);
-		LOGGER.info("LifeCycleParticipant::afterProjectsRead() value:{}", conf);
 		LOGGER.info(" -> " + session.getCurrentProject().getId());
 	}
 
 	@Override
 	public void afterSessionStart(MavenSession session) {
 		LOGGER.info("LifeCycleParticipant::afterSessionStart() {}", this);
-		LOGGER.info("LifeCycleParticipant::afterSessionStart() value:" + conf);
 	}
 
 	@Override
 	public void afterSessionEnd(MavenSession session) throws MavenExecutionException {
 		LOGGER.info("LifeCycleParticipant::afterSessionEnd(start)");
-		LOGGER.info("LifeCycleParticipant::afterSessionEnd() value:" + conf);
 		MavenProject project = session.getProjects().get(0);
 
 		if (!project.hasLifecyclePhase(LifecyclePhase.DEPLOY.id())) {
