@@ -42,6 +42,7 @@ public class LifeCycleParticipant extends AbstractMavenLifecycleParticipant {
 
 	@Override
 	public void afterSessionStart(MavenSession session) {
+		//This is only be called if this an extension only...
 		LOGGER.info("LifeCycleParticipant::afterSessionStart() {}", this);
 	}
 
