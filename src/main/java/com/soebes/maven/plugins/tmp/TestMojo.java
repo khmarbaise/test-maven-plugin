@@ -1,5 +1,7 @@
 package com.soebes.maven.plugins.tmp;
 
+import java.util.jar.Manifest;
+
 import javax.inject.Inject;
 
 import org.apache.maven.plugin.MojoExecutionException;
@@ -7,6 +9,7 @@ import org.apache.maven.plugin.MojoFailureException;
 import org.apache.maven.plugins.annotations.LifecyclePhase;
 import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
+import org.apache.maven.project.MavenProject;
 
 /**
  * Will check dependencies of your project and fail the build if they are not up-to-date.
@@ -18,6 +21,9 @@ public class TestMojo
     extends AbstractUpToDateMojo
 {
 
+	@Parameter(defaultValue = "${project}", required = true, readonly = true) 
+	private MavenProject project;
+	
 	@Parameter
 	private String conf;
 	
@@ -34,6 +40,9 @@ public class TestMojo
             return;
         }
 
+        this.getClass().getResource("test").toString();
+        Manifest mf = new Manifest();
+        
 //        deploy.setConf(conf);
     }
 
