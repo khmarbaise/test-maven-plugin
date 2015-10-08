@@ -47,7 +47,7 @@ public class LifeCycleParticipant extends AbstractMavenLifecycleParticipant {
 
 	@Override
 	public void afterSessionEnd(MavenSession session) throws MavenExecutionException {
-		LOGGER.info("LifeCycleParticipant::afterSessionEnd(start)");
+		LOGGER.info("LifeCycleParticipant::afterSessionEnd(start) {}", this);
 		MavenProject project = session.getProjects().get(0);
 
 		if (!project.hasLifecyclePhase(LifecyclePhase.DEPLOY.id())) {
@@ -57,7 +57,7 @@ public class LifeCycleParticipant extends AbstractMavenLifecycleParticipant {
 		for (MavenProject p : session.getProjectDependencyGraph().getSortedProjects()) {
 			LOGGER.info("-> Project:" + p.getId());
 		}
-		LOGGER.info("LifeCycleParticipant::afterSessionEnd(end)");
+		LOGGER.info("LifeCycleParticipant::afterSessionEnd(end) {}", this);
 	}
 
 }

@@ -97,11 +97,11 @@
         <version>1.7.5</version>
       </dependency>
       <!--
-      <dependency>
+        <dependency>
         <groupId>io.takari.maven.plugins</groupId>
         <artifactId>takari-plugin-testing</artifactId>
         <version>1.8.5</version>
-      </dependency>
+        </dependency>
       -->
     </dependencies>
   </dependencyManagement>
@@ -157,7 +157,6 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-plugin-plugin</artifactId>
-        <version>3.4</version>
         <configuration>
           <goalPrefix>test</goalPrefix>
         </configuration>
@@ -180,20 +179,20 @@
       </plugin>
 
       <!--
-      <plugin>
+        <plugin>
         <groupId>io.takari.maven.plugins</groupId>
         <artifactId>takari-plugin-testing-plugin</artifactId>
         <version>1.8.5</version>
         <executions>
-          <execution>
-            <id>testProperties</id>
-            <phase>process-test-resources</phase>
-            <goals>
-              <goal>testProperties</goal>
-            </goals>
-          </execution>
+        <execution>
+        <id>testProperties</id>
+        <phase>process-test-resources</phase>
+        <goals>
+        <goal>testProperties</goal>
+        </goals>
+        </execution>
         </executions>
-      </plugin>
+        </plugin>
       -->
 
       <plugin>
@@ -261,14 +260,6 @@
         <groupId>org.eclipse.sisu</groupId>
         <artifactId>sisu-maven-plugin</artifactId>
         <version>0.3.2</version>
-        <executions>
-          <execution>
-            <id>generate-index</id>
-            <goals>
-              <goal>main-index</goal>
-            </goals>
-          </execution>
-        </executions>
       </plugin>
     </plugins>
   </build>
@@ -332,11 +323,11 @@
       <artifactId>slf4j-api</artifactId>
     </dependency>
     <!--
-    <dependency>
+      <dependency>
       <groupId>io.takari.maven.plugins</groupId>
       <artifactId>takari-plugin-testing</artifactId>
       <scope>test</scope>
-    </dependency>
+      </dependency>
     -->
 
   </dependencies>

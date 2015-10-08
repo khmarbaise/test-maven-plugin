@@ -40,9 +40,6 @@ public class TestMojo
             return;
         }
 
-        this.getClass().getResource("test").toString();
-        Manifest mf = new Manifest();
-        
 //        deploy.setConf(conf);
     }
 
