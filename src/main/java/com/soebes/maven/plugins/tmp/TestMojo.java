@@ -1,7 +1,5 @@
 package com.soebes.maven.plugins.tmp;
 
-import java.util.jar.Manifest;
-
 import javax.inject.Inject;
 
 import org.apache.maven.plugin.MojoExecutionException;
