@@ -7,6 +7,7 @@ import javax.inject.Singleton;
 import org.apache.maven.AbstractMavenLifecycleParticipant;
 import org.apache.maven.MavenExecutionException;
 import org.apache.maven.execution.MavenSession;
+import org.apache.maven.plugin.AbstractMojo;
 import org.apache.maven.plugins.annotations.LifecyclePhase;
 import org.apache.maven.project.MavenProject;
 import org.apache.maven.repository.RepositorySystem;
@@ -24,22 +25,24 @@ public class LifeCycleParticipant
 
     private RepositorySystem system;
 
-    public RepositorySystem getSystem()
-    {
-        return system;
-    }
-
-    public void setSystem( RepositorySystem system )
-    {
-        this.system = system;
-    }
+    private AbstractMojo mojo;
+    
+    private static int instanceCounter;
 
     @Inject
     public LifeCycleParticipant( RepositorySystem system )
     {
         LOGGER.info( "LifeCycleParticipant::LifeCycleParticipant(ctro) {}", this );
+        LOGGER.info( "LifeCycleParticipant::LifeCycleParticipant(ctro) {}", instanceCounter);
         this.system = system;
         this.conf = "Unkonwn";
+        this.mojo = null;
+        instanceCounter++;
+    }
+
+    public static int getInstanceCounter()
+    {
+        return instanceCounter;
     }
 
     @Override
@@ -83,6 +86,26 @@ public class LifeCycleParticipant
     public void setConf( String conf )
     {
         this.conf = conf;
+    }
+
+    public AbstractMojo getMojo()
+    {
+        return mojo;
+    }
+
+    public void setMojo( AbstractMojo mojo )
+    {
+        this.mojo = mojo;
+    }
+
+    public RepositorySystem getSystem()
+    {
+        return system;
+    }
+
+    public void setSystem( RepositorySystem system )
+    {
+        this.system = system;
     }
 
 }

@@ -15,7 +15,7 @@ import org.apache.maven.plugins.annotations.Parameter;
  */
 @Mojo(name = "test", defaultPhase = LifecyclePhase.NONE, requiresProject = true, threadSafe = true)
 public class TestMojo
-    extends AbstractUpToDateMojo
+    extends AbstractTestMojo
 {
 
     @Parameter
@@ -36,6 +36,9 @@ public class TestMojo
 
         getLog().info( "Participant: " + deploy );
         deploy.setConf( conf );
+        //FIXME: Little trick to identify the correct instance..
+        deploy.setMojo( this );
+        getLog().info( " Instances existing:" + LifeCycleParticipant.getInstanceCounter() );
     }
 
 }
