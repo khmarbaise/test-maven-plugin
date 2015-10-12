@@ -27,22 +27,13 @@ public class LifeCycleParticipant
 
     private AbstractMojo mojo;
     
-    private static int instanceCounter;
-
     @Inject
     public LifeCycleParticipant( RepositorySystem system )
     {
         LOGGER.info( "LifeCycleParticipant::LifeCycleParticipant(ctro) {}", this );
-        LOGGER.info( "LifeCycleParticipant::LifeCycleParticipant(ctro) {}", instanceCounter);
         this.system = system;
         this.conf = "Unkonwn";
         this.mojo = null;
-        instanceCounter++;
-    }
-
-    public static int getInstanceCounter()
-    {
-        return instanceCounter;
     }
 
     @Override
@@ -64,6 +55,7 @@ public class LifeCycleParticipant
         throws MavenExecutionException
     {
         LOGGER.info( "LifeCycleParticipant::afterSessionEnd(start) {}", this );
+        LOGGER.info( "LifeCycleParticipant::afterSessionEnd(start) mojo:={}", mojo);
         MavenProject project = session.getProjects().get( 0 );
 
         if ( !project.hasLifecyclePhase( LifecyclePhase.DEPLOY.id() ) )
