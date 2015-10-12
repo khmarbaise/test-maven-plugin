@@ -38,7 +38,6 @@ public class TestMojo
         deploy.setConf( conf );
         //FIXME: Little trick to identify the correct instance..
         deploy.setMojo( this );
-        getLog().info( " Instances existing:" + LifeCycleParticipant.getInstanceCounter() );
     }
 
 }
