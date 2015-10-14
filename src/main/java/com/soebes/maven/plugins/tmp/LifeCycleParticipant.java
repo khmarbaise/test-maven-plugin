@@ -21,6 +21,8 @@ public class LifeCycleParticipant
 {
     private final Logger LOGGER = LoggerFactory.getLogger( getClass() );
 
+    private boolean afterSessionReadCalled;
+    
     private String conf;
 
     private RepositorySystem system;
@@ -34,6 +36,7 @@ public class LifeCycleParticipant
         this.system = system;
         this.conf = "Unkonwn";
         this.mojo = null;
+        this.afterSessionReadCalled = false;
     }
 
     @Override
@@ -41,6 +44,7 @@ public class LifeCycleParticipant
     {
         LOGGER.info( "LifeCycleParticipant::afterProjectsRead() {}", this );
         LOGGER.info( " -> " + session.getCurrentProject().getId() );
+        this.afterSessionReadCalled = true;
     }
 
     @Override
@@ -56,6 +60,8 @@ public class LifeCycleParticipant
     {
         LOGGER.info( "LifeCycleParticipant::afterSessionEnd(start) {}", this );
         LOGGER.info( "LifeCycleParticipant::afterSessionEnd(start) mojo:={}", mojo);
+        LOGGER.info( "LifeCycleParticipant::afterSessionEnd(start) asr:={}", afterSessionReadCalled);
+        
         MavenProject project = session.getProjects().get( 0 );
 
         if ( !project.hasLifecyclePhase( LifecyclePhase.DEPLOY.id() ) )
