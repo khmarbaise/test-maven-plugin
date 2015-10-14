@@ -27,6 +27,8 @@ public class TestMojo
     public void execute()
         throws MojoExecutionException, MojoFailureException
     {
+        //FIXME: Little trick to identify the correct instance..
+        deploy.setMojo( this );
 
         if ( isSkip() )
         {
@@ -36,8 +38,6 @@ public class TestMojo
 
         getLog().info( "Participant: " + deploy );
         deploy.setConf( conf );
-        //FIXME: Little trick to identify the correct instance..
-        deploy.setMojo( this );
     }
 
 }
