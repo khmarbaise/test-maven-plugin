@@ -11,6 +11,11 @@ Overview
 
 Test for LifeCycle participant
 
-Parent Check
-------------
+ATTENTION: Running the integration tests via
+
+```
+mvn -Prun-its clean verify
+```
+
+will run correctly with Maven 3.2.6 (!!!)....
 
