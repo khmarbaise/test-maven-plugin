@@ -43,10 +43,6 @@ public class LifeCycleParticipant
     public void afterProjectsRead( MavenSession session )
     {
         LOGGER.info( "LifeCycleParticipant::afterProjectsRead() {}", this );
-        for ( MavenProject p : session.getProjectDependencyGraph().getSortedProjects() )
-        {
-            LOGGER.info( "-> Project:" + p.getId() );
-        }
         this.afterProjectReadCalled = true;
     }
 

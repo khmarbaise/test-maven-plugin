@@ -2,13 +2,11 @@ package com.soebes.maven.plugins.tmp;
 
 import javax.inject.Inject;
 
-import org.apache.maven.execution.MavenSession;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
 import org.apache.maven.plugins.annotations.LifecyclePhase;
 import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
-import org.apache.maven.project.MavenProject;
 
 /**
  * Will check dependencies of your project and fail the build if they are not up-to-date.
@@ -19,12 +17,6 @@ import org.apache.maven.project.MavenProject;
 public class TestMojo
     extends AbstractTestMojo
 {
-
-    @Parameter( defaultValue = "${project}", readonly = true, required = true )
-    private MavenProject project;
-
-    @Parameter( defaultValue = "${session}", readonly = true, required = true )
-    private MavenSession session;
 
     @Parameter
     private String conf;
