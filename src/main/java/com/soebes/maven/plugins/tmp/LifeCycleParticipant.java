@@ -21,7 +21,7 @@ public class LifeCycleParticipant
 {
     private final Logger LOGGER = LoggerFactory.getLogger( getClass() );
 
-    private boolean afterSessionReadCalled;
+    private boolean afterProjectReadCalled;
     
     private String conf;
 
@@ -36,15 +36,18 @@ public class LifeCycleParticipant
         this.system = system;
         this.conf = "Unkonwn";
         this.mojo = null;
-        this.afterSessionReadCalled = false;
+        this.afterProjectReadCalled = false;
     }
 
     @Override
     public void afterProjectsRead( MavenSession session )
     {
         LOGGER.info( "LifeCycleParticipant::afterProjectsRead() {}", this );
-        LOGGER.info( " -> " + session.getCurrentProject().getId() );
-        this.afterSessionReadCalled = true;
+        for ( MavenProject p : session.getProjectDependencyGraph().getSortedProjects() )
+        {
+            LOGGER.info( "-> Project:" + p.getId() );
+        }
+        this.afterProjectReadCalled = true;
     }
 
     @Override
@@ -60,7 +63,7 @@ public class LifeCycleParticipant
     {
         LOGGER.info( "LifeCycleParticipant::afterSessionEnd(start) {}", this );
         LOGGER.info( "LifeCycleParticipant::afterSessionEnd(start) mojo:={}", mojo);
-        LOGGER.info( "LifeCycleParticipant::afterSessionEnd(start) asr:={}", afterSessionReadCalled);
+        LOGGER.info( "LifeCycleParticipant::afterSessionEnd(start) aferProjectReadCalled:={}", afterProjectReadCalled);
         
         MavenProject project = session.getProjects().get( 0 );
 
@@ -104,6 +107,11 @@ public class LifeCycleParticipant
     public void setSystem( RepositorySystem system )
     {
         this.system = system;
+    }
+
+    public boolean isAfterProjectReadCalled()
+    {
+        return afterProjectReadCalled;
     }
 
 }

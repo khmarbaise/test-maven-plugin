@@ -20,9 +20,11 @@
   <name>Test Maven Plugin.</name>
   <description>Test for LifeCylce Participant</description>
 
+  <!--
   <prerequisites>
     <maven>${maven.version}</maven>
   </prerequisites>
+  -->
 
   <properties>
     <maven.version>3.2.1</maven.version>
@@ -319,7 +321,10 @@
               <projectsDirectory>src/it</projectsDirectory>
               <showVersion>false</showVersion>
               <pomIncludes>
-                <pomInclude>**/pom.xml</pomInclude>
+                <pomInclude>basicTest/pom.xml</pomInclude>
+                <pomInclude>install-only-test/pom.xml</pomInclude>
+                <pomInclude>logging-test/pom.xml</pomInclude>
+                <pomInclude>multi-module/pom.xml</pomInclude>
               </pomIncludes>
               <preBuildHookScript>setup</preBuildHookScript>
               <postBuildHookScript>verify</postBuildHookScript>

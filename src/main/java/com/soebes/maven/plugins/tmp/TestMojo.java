@@ -2,21 +2,29 @@ package com.soebes.maven.plugins.tmp;
 
 import javax.inject.Inject;
 
+import org.apache.maven.execution.MavenSession;
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
 import org.apache.maven.plugins.annotations.LifecyclePhase;
 import org.apache.maven.plugins.annotations.Mojo;
 import org.apache.maven.plugins.annotations.Parameter;
+import org.apache.maven.project.MavenProject;
 
 /**
  * Will check dependencies of your project and fail the build if they are not up-to-date.
  * 
  * @author Karl-Heinz Marbaise <a href="mailto:khmarbaise@apache.org">khmarbaise@apache.org</a>
  */
-@Mojo(name = "test", defaultPhase = LifecyclePhase.NONE, requiresProject = true, threadSafe = true)
+@Mojo( name = "test", defaultPhase = LifecyclePhase.NONE, requiresProject = true, threadSafe = true )
 public class TestMojo
     extends AbstractTestMojo
 {
+
+    @Parameter( defaultValue = "${project}", readonly = true, required = true )
+    private MavenProject project;
+
+    @Parameter( defaultValue = "${session}", readonly = true, required = true )
+    private MavenSession session;
 
     @Parameter
     private String conf;
@@ -27,7 +35,7 @@ public class TestMojo
     public void execute()
         throws MojoExecutionException, MojoFailureException
     {
-        //FIXME: Little trick to identify the correct instance..
+        // FIXME: Little trick to identify the correct instance..
         deploy.setMojo( this );
 
         if ( isSkip() )
@@ -38,6 +46,7 @@ public class TestMojo
 
         getLog().info( "Participant: " + deploy );
         deploy.setConf( conf );
+
     }
 
 }
