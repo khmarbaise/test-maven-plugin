@@ -1,7 +1,5 @@
 package com.soebes.maven.plugins.tmp;
 
-import javax.inject.Inject;
-
 import org.apache.maven.plugin.MojoExecutionException;
 import org.apache.maven.plugin.MojoFailureException;
 import org.apache.maven.plugins.annotations.LifecyclePhase;
@@ -21,23 +19,15 @@ public class TestMojo
     @Parameter
     private String conf;
 
-    @Inject
-    private LifeCycleParticipant deploy;
-
     public void execute()
         throws MojoExecutionException, MojoFailureException
     {
-        // FIXME: Little trick to identify the correct instance..
-        deploy.setMojo( this );
 
         if ( isSkip() )
         {
             getLog().info( " Skipping execution based on user request." );
             return;
         }
-
-        getLog().info( "Participant: " + deploy );
-        deploy.setConf( conf );
 
     }
 

@@ -13,12 +13,12 @@
   </parent>
 
   <groupId>com.soebes.maven.plugins</groupId>
-  <artifactId>test-maven-plugin</artifactId>
+  <artifactId>test-maven-plugin-lifecycle</artifactId>
   <version>0.1.0-SNAPSHOT</version>
   <packaging>maven-plugin</packaging>
 
   <name>Test Maven Plugin.</name>
-  <description>Test for LifeCylce Participant</description>
+  <description>Test for LifeCylce Enhancements</description>
 
   <!--
   <prerequisites>

@@ -1,0 +1,16 @@
+<component-set>
+  <components>
+    <component>
+      <role>org.apache.maven.lifecycle.mapping.LifecycleMapping</role>
+      <role-hint>anton</role-hint>
+      <implementation>org.apache.maven.lifecycle.mapping.DefaultLifecycleMapping</implementation>
+      <instantiation-strategy>per-lookup</instantiation-strategy>
+      <configuration>
+        <phases>
+          <initialize>com.soebes.maven.plugins:test-maven-plugin-lifecycle:test</initialize>
+          <deploy>org.apache.maven.plugins:maven-deploy-plugin:deploy</deploy>
+        </phases>
+      </configuration>
+    </component>
+  </components>
+</component-set>
