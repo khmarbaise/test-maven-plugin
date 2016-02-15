@@ -23,12 +23,7 @@ public class TestMojo
         throws MojoExecutionException, MojoFailureException
     {
 
-        if ( isSkip() )
-        {
-            getLog().info( " Skipping execution based on user request." );
-            return;
-        }
-
+        getLog().info( "test goal has been called." );
     }
 
 }

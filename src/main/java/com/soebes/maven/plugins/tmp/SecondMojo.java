@@ -18,7 +18,7 @@ public class SecondMojo
     public void execute()
         throws MojoExecutionException, MojoFailureException
     {
-        getLog().info( "This is goal: second" );
+        getLog().info( "second goal has been called." );
 
     }
 

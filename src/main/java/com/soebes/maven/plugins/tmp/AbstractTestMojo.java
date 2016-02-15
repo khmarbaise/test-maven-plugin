@@ -10,13 +10,6 @@ public abstract class AbstractTestMojo
 {
 
     /**
-     * You can skip the execution of test-maven-plugin in cases
-     * where you might encounter a failure.
-     */
-    @Parameter( defaultValue = "false", property = "tmp.skip" )
-    private boolean skip;
-
-    /**
      * The project currently being build.
      */
     @Parameter( defaultValue = "${project}", readonly = true )
@@ -27,16 +20,6 @@ public abstract class AbstractTestMojo
      */
     @Parameter( defaultValue = "${session}", readonly = true )
     private MavenSession mavenSession;
-
-    public boolean isSkip()
-    {
-        return skip;
-    }
-
-    public void setSkip( boolean skip )
-    {
-        this.skip = skip;
-    }
 
     public MavenProject getMavenProject()
     {
